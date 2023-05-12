@@ -13,7 +13,9 @@
 
 <body>
     <div class="test">
-        测试文本
+        <div class="testInner">
+            测试文本
+        </div>
     </div>
 
 
@@ -28,11 +30,26 @@
 
         // 获取类名位test的元素
         let test = my$('.test')[0]
+        let testInner = my$('.testInner')[0]
         //为test增加孩子结点
-        test.appendChild(div);
+        // test.appendChild(div);
         //为div结点增加textNode文本结点
         div.appendChild(textNode)
+        //替换结点
+        // test.replaceChild(div, testInner)
+        // 插入结点
+        // test.insertAfter(div, testInner);
+        // test.removeChild(testInner);
+        // 结点克隆
+        testInner.addEventListener('click', function () {
+            alert('Click!');
+        })
+        let cloneTestInner = testInner.cloneNode(true);
+        test.appendChild(cloneTestInner)
 
+        //判断元素有没有子结点
+        cl$(testInner.hasChildNodes());//返回true
+        cl$(testInner.contains(textNode));//返回false
     </script>
 </body>
 
