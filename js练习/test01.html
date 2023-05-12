@@ -12,11 +12,26 @@
 </head>
 
 <body>
-
+    <div class="test">
+        测试文本
+    </div>
 
 
     <script src="./common/common.js"></script>
     <script>
+        //创建元素结点
+        let div = document.createElement('div');
+        //创建属性结点
+        let attributes = document.createElement('class');
+        //创建文本结点
+        let textNode = document.createTextNode('Hello');
+
+        // 获取类名位test的元素
+        let test = my$('.test')[0]
+        //为test增加孩子结点
+        test.appendChild(div);
+        //为div结点增加textNode文本结点
+        div.appendChild(textNode)
 
     </script>
 </body>

@@ -1,5 +1,5 @@
 function my$(selector) {
-    return document.querySelectorAll$(select);
+    return document.querySelectorAll(selector);
 }
 function cl$(cl) {
     return console.log(cl);
