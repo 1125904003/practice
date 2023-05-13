@@ -18,28 +18,28 @@
         <div class="testInner">
             测试文本
         </div>
-        <<<<<<< HEAD <!-- 动态创建列表 -->
-            <div class="list"></div>
-            =======
-            <!-- 动态创建表格 -->
-            <div>
-                <table border="1px" style="border-collapse:collapse">
-                    <thead>
-                        <tr>
-                            <th>姓名</th>
-                            <th>学号</th>
-                            <th>学科</th>
-                            <th>分数</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody class="tbc" id="tbi">
+        <!-- 动态创建列表 -->
+        <div class="list"></div>
 
-                    </tbody>
-                </table>
+        <!-- 动态创建表格 -->
+        <div>
+            <table border="1px" style="border-collapse:collapse">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>学号</th>
+                        <th>学科</th>
+                        <th>分数</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tbc" id="tbi">
 
-            </div>
-            >>>>>>> test
+                </tbody>
+            </table>
+
+        </div>
+
     </div>
 
 
@@ -99,16 +99,28 @@
             { name: '赵七', xuehao: '20201217', xueke: '计算机组成原理', score: '75' }
         ];
         let tbi = document.getElementById('tbi');
-        cl$(tbi)
         for (let i = 0; i < datas.length; i++) {
             let tr = document.createElement('tr');
             tbi.appendChild(tr);
             let data = datas[i]
+            //使用for in对对象进行循环
             for (let k in data) {
                 let td = document.createElement('td')
                 tr.appendChild(td)
                 td.innerText = data[k]
             }
+            let td = document.createElement('td')
+            tr.appendChild(td)
+            let a = document.createElement('a')
+            //防止a执行跳转
+            a.href = 'javascript:void(0)'
+            a.innerHTML = '删除'
+            td.appendChild(a)
+            //为a添加点击事件
+            a.addEventListener('click', function () {
+                // this.parentNode.parentNode;
+                tbi.removeChild(this.parentNode.parentNode);
+            })
         }
     </script>
 </body>
