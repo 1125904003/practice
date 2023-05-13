@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS | 练习</title>
     <style>
-
+        table {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -16,8 +18,28 @@
         <div class="testInner">
             测试文本
         </div>
-        <!-- 动态创建列表 -->
-        <div class="list"></div>
+        <<<<<<< HEAD <!-- 动态创建列表 -->
+            <div class="list"></div>
+            =======
+            <!-- 动态创建表格 -->
+            <div>
+                <table border="1px" style="border-collapse:collapse">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>学号</th>
+                            <th>学科</th>
+                            <th>分数</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbc" id="tbi">
+
+                    </tbody>
+                </table>
+
+            </div>
+            >>>>>>> test
     </div>
 
 
@@ -66,6 +88,27 @@
             let li = document.createElement('li')
             ul.appendChild(li);
             li.innerText = names[i]
+        }
+        //动态创建表格
+        //模拟后台传过来的数据
+        let datas = [
+            { name: '张三', xuehao: '20201213', xueke: '语文', score: '52' },
+            { name: '李四', xuehao: '20201214', xueke: '数学', score: '85' },
+            { name: '王五', xuehao: '20201215', xueke: '音乐', score: '35' },
+            { name: '李六', xuehao: '20201216', xueke: '体育', score: '42' },
+            { name: '赵七', xuehao: '20201217', xueke: '计算机组成原理', score: '75' }
+        ];
+        let tbi = document.getElementById('tbi');
+        cl$(tbi)
+        for (let i = 0; i < datas.length; i++) {
+            let tr = document.createElement('tr');
+            tbi.appendChild(tr);
+            let data = datas[i]
+            for (let k in data) {
+                let td = document.createElement('td')
+                tr.appendChild(td)
+                td.innerText = data[k]
+            }
         }
     </script>
 </body>
