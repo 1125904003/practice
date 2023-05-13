@@ -61,7 +61,11 @@
 
             </select>
         </div>
-
+        <!-- 事件流测试 -->
+        <div class="eventFlow" style="width:50px;height: 50px; background-color: aquamarine;">
+            <div class="eventFlowInner" style="width:25px;height: 25px; background-color: gold;">
+            </div>
+        </div>
 
     </div>
 
@@ -198,6 +202,18 @@
                 arr[i].selected = false;
             }
         })
+
+        // 事件流JS代码
+        let eventFlow = my$('.eventFlow')[0]
+        eventFlow.addEventListener('click', function () {
+            cl$('evenFlow is clicked!')
+        })
+        let eventFlowInner = my$('.eventFlowInner')[0]
+        eventFlowInner.addEventListener('click', function () {
+            cl$('evenFlowInner is clicked!')
+        },)
+
+
     </script>
 </body>
 
