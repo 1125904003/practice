@@ -10,6 +10,12 @@
         table {
             text-align: center;
         }
+
+        select {
+            width: 200px;
+            height: 100px;
+            background: gold;
+        }
     </style>
 </head>
 
@@ -37,8 +43,25 @@
 
                 </tbody>
             </table>
-
         </div>
+        <!-- 水果案例 -->
+        <div class="fruit">
+            <select name="" size='5' id="all" multiple>
+                <option value="">苹果</option>
+                <option value="">橘子</option>
+                <option value="">梨</option>
+                <option value="">西瓜</option>
+                <option value="">水蜜桃</option>
+            </select>
+            <input type="button" value=">>" id="btn1">
+            <input type="button" value="<<" id="btn2">
+            <input type="button" value=">" id="btn3">
+            <input type="button" value="<" id="btn4">
+            <select name="" id="choose" size='5' multiple="multiple">
+
+            </select>
+        </div>
+
 
     </div>
 
@@ -122,6 +145,59 @@
                 tbi.removeChild(this.parentNode.parentNode);
             })
         }
+
+        //水果案例JS代码
+        let left = document.getElementById('all');
+        let right = document.getElementById('choose');
+
+        let btn1 = document.getElementById('btn1')
+        btn1.addEventListener('click', function () {
+            let opts = left.children;
+            let n = opts.length;
+            for (let i = 0; i < n; i++) {
+                right.appendChild(opts[0])
+            }
+        })
+
+        let btn2 = document.getElementById('btn2')
+        btn2.addEventListener('click', function () {
+            let opts = right.children;
+            let n = opts.length;
+            for (let i = 0; i < n; i++) {
+                left.appendChild(opts[0])
+            }
+        })
+
+        let btn3 = document.getElementById('btn3')
+        btn3.addEventListener('click', function () {
+            let opts = left.children;
+            let arr = [];
+            for (let i = 0; i < opts.length; i++) {
+                if (opts[i].selected === true) {
+                    // 将选中的水果项放入arr数组中
+                    arr.push(opts[i]);
+                }
+            }
+            for (let i = 0; i < arr.length; i++) {
+                right.appendChild(arr[i])
+                arr[i].selected = false;
+            }
+        })
+
+        let btn4 = document.getElementById('btn4')
+        btn4.addEventListener('click', function () {
+            let opts = right.children;
+            let arr = []
+            for (let i = 0; i < opts.length; i++) {
+                if (opts[i].selected === true) {
+                    arr.push(opts[i]);
+                }
+            }
+            for (let i = 0; i < arr.length; i++) {
+                left.appendChild(arr[i])
+                arr[i].selected = false;
+            }
+        })
     </script>
 </body>
 
