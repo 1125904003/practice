@@ -16,6 +16,8 @@
         <div class="testInner">
             测试文本
         </div>
+        <!-- 动态创建列表 -->
+        <div class="list"></div>
     </div>
 
 
@@ -50,6 +52,21 @@
         //判断元素有没有子结点
         cl$(testInner.hasChildNodes());//返回true
         cl$(testInner.contains(textNode));//返回false
+
+        //动态创建列表
+        let list = my$('.list')[0]
+        // 创建一个数组
+        let names = ['1', '2', '3', '4']
+        // 创建一个ul元素
+        let ul = document.createElement('ul')
+        // 把ul元素放到list元素里面作为子元素
+        list.appendChild(ul);
+        // 为ul添加li元素
+        for (let i = 0; i < names.length; i++) {
+            let li = document.createElement('li')
+            ul.appendChild(li);
+            li.innerText = names[i]
+        }
     </script>
 </body>
 
