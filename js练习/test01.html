@@ -7,6 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS | 练习</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #body {
+            border: 1px solid gray;
+        }
+
         table {
             text-align: center;
         }
@@ -16,10 +25,18 @@
             height: 100px;
             background: gold;
         }
+
+        .mouse {
+            /* position: absolute; */
+            float: right;
+            /* border: 1px solid red; */
+            width: 100px;
+            height: 20px;
+        }
     </style>
 </head>
 
-<body>
+<body id="body">
     <div class="test">
         <div class="testInner">
             测试文本
@@ -67,6 +84,10 @@
             </div>
         </div>
 
+        <!-- 鼠标位置实时显示 -->
+        <div class="mouse">
+
+        </div>
     </div>
 
 
@@ -213,7 +234,22 @@
             cl$('evenFlowInner is clicked!')
         },)
 
+        //获取鼠标相对Page左上角的坐标
+        let body = document.getElementById('body');
+        let mouse = my$('.mouse')[0];
+        body.onmouseover = function (e) {
+            mouse.innerText = "x:" + e.pageX + " | y:" + e.pageY
+        }
 
+        //单线程、多线程、阻塞、非阻塞、同步、异步理解
+        // 1.单线程：同一时刻只有一个任务执行
+        // 2.多线程：同一时刻可以有多个任务执行
+        // 3.阻塞：一个任务在执行时，后面的任务必须等待
+        // 4.非阻塞：一个任务在执行时，后面的任务不需要等待
+        // 5.同步处理：一个同步任务的执行，需要等待前面的任务执行加载完成
+        // 6.异步处理：一个异步任务的执行，后面的任务不需要等待，而异步任务自己也不会立即执行，执行结束后，会通过状态、通知和回调来通知主线程
+        //JS的执行是单线程非阻塞的，执行机制为事件循环机制
+        //事件
     </script>
 </body>
 
