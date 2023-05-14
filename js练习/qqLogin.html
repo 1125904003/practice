@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qq仿页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, sans-serif;
+        }
+
+        body {
+            background: transparent url(https://qq-web.cdn-go.cn/im.qq.com_new/b673bd69/img/video-qq9-poster.9983927f.png.webp) no-repeat;
+            background-size: cover;
+            /* background-position: center; */
+            overflow: hidden;
+        }
+
+        ul li {
+            list-style: none;
+            float: left;
+            width: 65px;
+            height: 60px;
+            /* border: 1px solid black; */
+            text-align: center;
+            line-height: 60px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #0099FF;
+        }
+
+        .header {
+            height: 60px;
+            border-bottom: 1px solid hsla(0, 0%, 100%, 0.3);
+        }
+
+        .header a {
+            color: #ffffff;
+        }
+
+        .header .left {
+            float: left;
+        }
+
+        .header .left ul li {
+            margin-left: 20px;
+        }
+
+        .header .left ul li:first-child {
+            margin-left: 40px;
+        }
+
+        .header .right {
+            float: right;
+        }
+
+        .header .right ul li {
+            margin-right: 20px;
+        }
+
+        .header .right ul li:last-child {
+            margin-right: 40px;
+        }
+
+        .loginBox {
+            width: 45%;
+            height: 45%;
+            background-color: #ffffff;
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
+            display: none;
+        }
+
+        .loginBox_content {
+            margin: 0 auto;
+            margin-top: 5%;
+            width: 50%;
+            height: 80%;
+            /* border: 1px solid pink; */
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .loginBox_content .close img {
+            position: absolute;
+            top: 8px;
+            right: 15px;
+            width: 18px;
+            height: 15px;
+        }
+
+        .loginBox_header p:first-child {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .loginBox_header a {
+            color: #2E77E5;
+        }
+
+        .loginBox_main {
+            margin-top: 20px;
+        }
+
+        .login_username,
+        .login_password {
+            border: 1px solid grey;
+            border-radius: 3px;
+            width: 100%;
+            height: 35px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .login_username input,
+        .login_password input {
+            width: 100%;
+            height: 100%;
+        }
+
+        .loginBtn {
+            margin-top: 20px;
+            width: 100%;
+            height: 35px;
+
+        }
+
+        .loginBtn input {
+            font-size: 14px;
+            line-height: 35px;
+            width: 100%;
+            height: 35px;
+            background-color: #0099ff;
+        }
+
+        .loginBox_bottom {
+            margin-top: 50px;
+        }
+
+        .loginBox_bottom span:first-child {
+            float: left;
+        }
+
+        .loginBox_bottom span:last-child {
+            float: right;
+        }
+
+        .mask {
+            position: absolute;
+            z-index: 1;
+            border: 1px solid black;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* top: -60px; */
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mask"></div>
+    <div class="header">
+        <div class="left">
+            <ul>
+                <li><a href="">QQ</a></li>
+                <li><a href="">首页</a></li>
+                <li><a href="">下载</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <ul>
+                <li><a href="">QQ会员</a></li>
+                <li><a href="">QQ安全</a></li>
+                <li><a href="" id="login">登录</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="loginBox">
+        <div class="loginBox_content">
+            <div class="close">
+                <img src="./pic/关闭.png" alt="">
+            </div>
+            <div class="loginBox_header">
+                <p>密码登录</p>
+                <p>推荐使用<a href="">快捷登录</a>，防止盗号。</p>
+            </div>
+            <div class="loginBox_main">
+                <div class="login_username">
+                    <input type="text" placeholder="支持QQ号/邮箱/手机号登录">
+                </div>
+                <div class="login_password">
+                    <input type="password" placeholder="请输入密码">
+                </div>
+                <div class="loginBtn">
+                    <input type="button" value="登录">
+                </div>
+            </div>
+            <div class="loginBox_bottom">
+                <span>找回密码</span><span>注册账号</span><span>意见反馈</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        let login = document.getElementById('login');
+        let mask = document.getElementsByClassName('mask')[0];
+        let loginBox = document.getElementsByClassName('loginBox')[0];
+        let close = document.getElementsByClassName('close')[0];
+        let a = document.getElementsByTagName('a');
+        login.onclick = function () {
+            mask.style.display = 'block';
+            loginBox.style.display = 'block';
+        }
+        close.onclick = function () {
+            mask.style.display = 'none';
+            loginBox.style.display = 'none';
+        }
+        for (let i = 0; i < a.length; i++) {
+            a[i].href = 'javascript:void(0)';
+        }
+    </script>
+</body>
+
+</html>
